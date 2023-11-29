@@ -5,16 +5,16 @@
  * to other projects. They're quick imperfect implementations
  * for the known, fixed data we work with here.
  */
-import differenceInDays from 'date-fns/differenceInDays';
+import differenceInDays from "date-fns/differenceInDays";
 
-export function formatPrice(price) {
+export function formatPrice(price: number) {
   return `$${price / 100}`;
 }
 
-export function pluralize(string, num) {
-  return num === 1 ? `1 ${string}` : `${num} ${string}s`;
+export function pluralize(s: string, num: number) {
+  return num === 1 ? `1 ${s}` : `${num} ${s}s`;
 }
 
-export function isNewShoe(releaseDate) {
+export function isNewShoe(releaseDate: Date) {
   return differenceInDays(new Date(), releaseDate) < 30;
 }
