@@ -16,8 +16,7 @@ export const Select = ({
   ...delegated
 }: SelectProps) => {
   const selectedChild = children.find((option) => option.props.value === value);
-  const displayedValue: string =
-    selectedChild?.props.children[0].textContent || "";
+  const displayedValue: any = selectedChild?.props.children;
 
   return (
     <Wrapper>
