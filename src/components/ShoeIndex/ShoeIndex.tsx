@@ -44,13 +44,30 @@ export const ShoeIndex = ({ sortId, setSortId }: ShoeIndexProps) => (
   </Wrapper>
 );
 
-const Wrapper = styled.div``;
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: baseline;
+  gap: 32px;
+`;
 
-const LeftColumn = styled.div``;
+const LeftColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-right: 64px;
+`;
 
-const MainColumn = styled.div``;
+const MainColumn = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 
-const Header = styled.header``;
+const Header = styled.header`
+  display: flex;
+  justify-content: space-between;
+`;
 
 const Title = styled.h2`
   font-size: 1.5rem;

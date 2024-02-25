@@ -61,6 +61,7 @@ export const ShoeCard = ({
 const Link = styled.a`
   text-decoration: none;
   color: inherit;
+  width: 30%;
 `;
 
 const Wrapper = styled.article``;
@@ -69,7 +70,9 @@ const ImageWrapper = styled.div`
   position: relative;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  border-radius: 16px 16px 4px 4px;
+`;
 
 const Row = styled.div`
   font-size: 1rem;

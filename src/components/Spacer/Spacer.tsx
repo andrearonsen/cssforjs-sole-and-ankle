@@ -9,5 +9,5 @@ export const Spacer = ({ size }: SpacerProps) => (
 );
 
 const Wrapper = styled.div<{ $size: number }>`
-  padding: ${(props) => props.$size};
+  padding: ${(props) => props.$size + "px"};
 `;

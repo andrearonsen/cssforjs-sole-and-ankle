@@ -18,13 +18,19 @@ export const SuperHeader = () => (
 );
 
 const Wrapper = styled.div`
+  display: flex;
+  gap: 32px;
+  align-items: center;
   font-size: 0.875rem;
   color: ${COLORS.gray[300]};
   background-color: ${COLORS.gray[900]};
+  padding: 0 36px;
 `;
 
 const MarketingMessage = styled.span`
   color: ${COLORS.white};
+  padding: 12px 0;
+  width: 100%;
 `;
 
 const HelpLink = styled.a`
