@@ -37,21 +37,41 @@ export const ShoeCard = ({
       ? 'on-sale'
       : isNewShoe(releaseDate)
         ? 'new-release'
-        : 'default'
+        : 'default';
+
+  const getVariantFlag = () => {
+    if (variant === "on-sale") {
+      return <SaleFlag>Sale</SaleFlag>;
+    } else if (variant === "new-release") {
+      return <NewReleaseFlag>Just Released!</NewReleaseFlag>;
+    }
+    return <></>;
+  };
+
+  const showSalePrice = variant === "on-sale" && salePrice;
+  const displayPrice = () => {
+    return showSalePrice ? (
+      <OldPrice>{formatPrice(price)}</OldPrice>
+    ) : (
+      <Price>{formatPrice(price)}</Price>
+    );
+  };
 
   return (
     <Link href={`/shoe/${slug}`}>
       <Wrapper>
         <ImageWrapper>
+          {getVariantFlag()}
           <Image alt="" src={imageSrc} />
         </ImageWrapper>
         <Spacer size={12} />
         <Row>
           <Name>{name}</Name>
-          <Price>{formatPrice(price)}</Price>
+          {displayPrice()}
         </Row>
         <Row>
           <ColorInfo>{pluralize("Color", numOfColors)}</ColorInfo>
+          {showSalePrice && <SalePrice>{formatPrice(salePrice)}</SalePrice>}
         </Row>
       </Wrapper>
     </Link>
@@ -75,6 +95,8 @@ const Image = styled.img`
 `;
 
 const Row = styled.div`
+  display: flex;
+  justify-content: space-between;
   font-size: 1rem;
 `;
 
@@ -85,6 +107,11 @@ const Name = styled.h3`
 
 const Price = styled.span``;
 
+const OldPrice = styled.span`
+  text-decoration: line-through;
+  color: ${COLORS.gray[700]};
+`;
+
 const ColorInfo = styled.p`
   color: ${COLORS.gray[700]};
 `;
@@ -92,6 +119,28 @@ const ColorInfo = styled.p`
 const SalePrice = styled.span`
   font-weight: ${WEIGHTS.medium};
   color: ${COLORS.primary};
+`;
+
+const Flag = styled.div`
+  position: absolute;
+  right: -4px;
+  top: 12px;
+  z-index: 1;
+  border-radius: 2px;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 0.5rem;
+  width: fit-content;
+`;
+
+const NewReleaseFlag = styled(Flag)`
+  background: ${COLORS.secondary};
+  color: white;
+`;
+
+const SaleFlag = styled(Flag)`
+  background: ${COLORS.primary};
+  color: white;
 `;
 
 export default ShoeCard;
